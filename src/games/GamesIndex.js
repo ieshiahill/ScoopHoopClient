@@ -4,6 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 import CreateGame from "../games/CreateGame";
 import GamesEdit from "../games/GamesEdit";
 import GamesTable from "../games/GamesTable";
+import APIURL from "../helpers/environment";
 
 class GamesIndex extends React.Component{
 
@@ -25,7 +26,7 @@ class GamesIndex extends React.Component{
     }
 
    gamesUpdate = (event, games) => {
-        fetch("http://localhost:3000/games/find/${games.id}", {
+    fetch(`${APIURL}/games/find/${games.id}`, {
             method: "PUT",
             body: JSON.stringify({ games: logData }),
             headers: new Headers({

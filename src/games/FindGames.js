@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Col, Row } from "reactstrap";
 import GamesTable from "../games/GamesTable";
 import CreateGame from "../games/CreateGame";
+import APIURL from "../helpers/environment";
 
 class FindGames extends Component {
     constructor(props){
@@ -33,7 +34,7 @@ class FindGames extends Component {
     }
 
     fetchGames = () => {
-        fetch(`http://localhost:3000/games/find`, {
+        fetch(`${APIURL}/games/find`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",

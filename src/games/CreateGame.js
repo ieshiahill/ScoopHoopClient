@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import APIURL from "../helpers/environment";
 
 class CreateGame extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class CreateGame extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:3000/games/creategames`, {
+        fetch(`${APIURL}/games/creategames`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: new Headers({
