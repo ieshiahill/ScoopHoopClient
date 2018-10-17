@@ -5,7 +5,7 @@ import {
     Switch
   } from "react-router-dom";
   import FindGames from '../games/FindGames';
-  import CreateGame from '../games/CreateGame';
+//   import CreateGame from '../games/CreateGame';
   import Authorize from "../auth/Authorize";
   // import Splash from "../home/Splash";
 
@@ -20,7 +20,7 @@ import {
             <br />
             <button><li><Link to="/FindGames">Find Games</Link></li></button>
             <br />
-            <button><li><Link to="/StartGame">Start Game</Link></li></button>
+            {/* <button><li><Link to="/StartGame">Start Game</Link></li></button> */}
             <br />
             <button><li><Link to="/Auth">Logout</Link></li></button>
           </ul>
@@ -31,7 +31,7 @@ import {
         <Switch>
             {/* <Route exact path="/"><FindGames /></Route> */}
             <Route exact path="/FindGames"><FindGames /></Route>
-            <Route exact path="/StartGame"><CreateGame /></Route>
+            {/* <Route exact path="/StartGame"><CreateGame /></Route> */}
             <Route exact path="/auth"><Authorize /></Route>
         </Switch>
         </div>

@@ -1,3 +1,7 @@
+body { 
+    background-color: rgb(236, 232, 226);
+}
+
 
 /*auth*/
 .auth-container { 
@@ -12,13 +16,28 @@
     border-left: 1px solid black;
 }
 
+.creategame {
+    float: left;
+    width: 40%;
+}
+
+.findgame {
+    float: left;
+    width: 5%;
+}
+
+#navbutton {
+    float: left;
+    border-radius: 10%;
+}
+
 /*navbar*/
 .nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #cc6607;
+    background-color: #c99d72;
     width: 100%;
    }
 
@@ -32,7 +51,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #1e3677;
+    background-color: #c99d72;;
     width: 100%;
    }
 

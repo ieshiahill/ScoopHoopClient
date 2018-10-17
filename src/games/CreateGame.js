@@ -55,9 +55,9 @@ class CreateGame extends Component {
     render() {
         return (
             <div>
-                  
-                    <Form className onSubmit={this.handleSubmit} >
-                        <FormGroup>
+                  <h2>Start a Game!</h2>
+                    <Form md="3" className onSubmit={this.handleSubmit} >
+                        <FormGroup >
                             <Label for="frequency">Game Frequency</Label>
                             <Input id="frequency" type="select" name="frequency" value={this.state.frequency} placeholder="Type" onChange={this.handleChange}>
                             <option></option>

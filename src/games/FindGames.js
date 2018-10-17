@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Col, Row } from "reactstrap";
 import GamesTable from "../games/GamesTable";
-// import CreateGame from "../games/CreateGame";
+import CreateGame from "../games/CreateGame";
 
 class FindGames extends Component {
     constructor(props){
@@ -47,27 +47,33 @@ class FindGames extends Component {
         })
     }
 
+    shouldComponentUpdate() {
+        return true;
+    }
+
 render() {
     const games = this.state.games.length >= 1 ?
     <GamesTable games={this.state.games} /> :
     <div>NO</div>
     return (
+        
         <div>
-           <Container>
+           <Container className="creategame">
                <Row>
                    <Col>
-                   {/* <CreateGame token={this.props.token} /> */}
+                   <CreateGame token={this.props.token} />
                    </Col>
                 </Row>
-                <Row>
+            </Container>
+            <Container className="findgame">
+                <Row> 
                     <Col>
                     {games}
                     </Col>
                 </Row>
             </Container>
-
-
         </div>
+       
         )
     }
 }

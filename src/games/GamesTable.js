@@ -4,7 +4,7 @@ import { Table, Button } from "reactstrap";
 const GamesTable = (props) => {
     return (
         <div>
-            <h3>Games Table</h3>
+            <h2>Available Games</h2>
             <hr />
             <Table striped>
             <thead>

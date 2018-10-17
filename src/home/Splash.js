@@ -8,7 +8,6 @@ const Splash = (props) => {
     return (
         <div>
         {/* <Sitebar /> */}
-        HELLO!
         <Sidebar />
         {/* <Footer /> */}
         </div>

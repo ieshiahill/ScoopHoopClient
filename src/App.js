@@ -16,7 +16,7 @@ import {
     render() {
       return (
         <div>
-          <Sitebar />
+          <Sitebar clickLogout={this.logout} />
           <Router>
           <Main />
           </Router>
