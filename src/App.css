@@ -1,0 +1,64 @@
+
+/*auth*/
+.auth-container { 
+    margin-top: 5em;
+    padding: 2em;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.4em;
+    box-shadow: 2px 4px 20px #f0f0f0;
+}
+​
+.login-col {
+    border-left: 1px solid black;
+}
+
+/*navbar*/
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #cc6607;
+    width: 100%;
+   }
+
+#navtextcolor {
+    color: white;
+}
+
+ /*footer*/
+   .foot {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1e3677;
+    width: 100%;
+   }
+
+#foottextcolor {
+    color: white;
+}
+
+   /* Sidebar */
+.sidebar-list-styling {
+    padding-left: 50px;
+    padding-top: 15px;
+    width: 20%;
+    background-color: rgb(227, 230, 229);
+    color: white;
+    height: 100%;
+  }
+  
+ .sidebar-list a {
+    color: black;
+    padding: 0;
+  } 
+
+  .sidebar-route {
+    flex: 1;
+    padding: "00px";
+  }
+
+
+       
