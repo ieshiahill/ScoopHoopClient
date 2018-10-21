@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import APIURL from "../helpers/environment";
+// import APIURL from "../helpers/environment";
 
 class Login extends Component {
 
@@ -8,7 +8,8 @@ class Login extends Component {
         super(props) 
             this.state = {
                 username: " ",
-                password: " "
+                password: " ",
+                city: " "
             };
         }
 
@@ -19,7 +20,8 @@ class Login extends Component {
         }
 
         handleSubmit = (event) => {
-            fetch(`${APIURL}/user.signin`, {
+            // fetch(`${APIURL}/user/signin`, {
+                fetch("http://localhost:3000/user/signin", {
                 method: "POST",
                 body: JSON.stringify({user:this.state}),
                 headers: new Headers({
@@ -37,7 +39,7 @@ class Login extends Component {
             return (
                 <div>
                     <h1>Login</h1>
-                    <h6>Login to Find Games</h6>
+                    <h6>Login to Find Games!</h6>
                     <Form onSubmit={this.handleSubmit} >
                         <FormGroup>
                             <Label for="username">Username</Label>

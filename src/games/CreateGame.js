@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import APIURL from "../helpers/environment";
 
 class CreateGame extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            gamefrequency: " ",
-            time: " ",
-            startdate: " ",
-            venue: " ",
-            address: " ",
-            city: " ",
-            state: " ",
-            zipcode: " ",
-            cost: " ",
-            notes: " ",
+            id: "",
+            gamefrequency: "",
+            time: "",
+            startdate: "",
+            venue: "",
+            address: "",
+            city: "",
+            state: "",
+            zipcode: "",
+            cost: "",
+            notes: "",
         };
     }
 
@@ -27,28 +27,29 @@ class CreateGame extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`${APIURL}/games/creategames`, {
+        fetch("http://localhost:3000/games", {
             method: "POST",
-            body: JSON.stringify(this.state),
+            body: JSON.stringify({games: this.state }),
             headers: new Headers({
                 "Content-Type": "application/json",
                 "Authorization": this.props.token
             })
         })
         .then((res) => res.json())
-        .then((logData) => {
+        .then((gamesData) => {
+            this.props.updateGamesArray();
             this.setState({
-                id: " ",
-                gamefrequency: " ",
-                time: " ",
-                startdate: " ",
-                venue: " ",
-                address: " ",
-                city: " ",
-                state: " ",
-                zipcode: " ",
-                cost: " ",
-                notes: " ",
+                id: "",
+                gamefrequency: "",
+                time: "",
+                startdate: "",
+                venue: "",
+                address: "",
+                city: "",
+                state: "",
+                zipcode: "",
+                cost: "",
+                notes: "",
             })
         })
     }
@@ -57,7 +58,7 @@ class CreateGame extends Component {
         return (
             <div>
                   <h2>Start a Game!</h2>
-                    <Form md="3" className onSubmit={this.handleSubmit} >
+                    <Form md="3" onSubmit={this.handleSubmit} >
                         <FormGroup >
                             <Label for="frequency">Game Frequency</Label>
                             <Input id="frequency" type="select" name="frequency" value={this.state.frequency} placeholder="Type" onChange={this.handleChange}>

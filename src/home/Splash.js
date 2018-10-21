@@ -1,15 +1,13 @@
 import React from "react";
-import Sidebar from '../layout/Sidebar'
-// import Sitebar from "../layout/Navbar";
-// import Footer from "../layout/Footer"
+// import FindGames from "../games/FindGames";
+import GamesIndex from "../games/GamesIndex";
+
 
 
 const Splash = (props) => {
     return (
         <div>
-        {/* <Sitebar /> */}
-        <Sidebar />
-        {/* <Footer /> */}
+        <GamesIndex token={props.sessionToken} /> 
         </div>
     )
 }

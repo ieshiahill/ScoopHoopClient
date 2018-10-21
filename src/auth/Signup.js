@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import APIURL from "../helpers/environment";
+// import APIURL from "../helpers/environment";
 
 class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            email: " ",
             username: " ", //Note that we've added username and password to our state. We want to set these items to empty strings to set the initial value for the state of those properties. Simply put, when a user starts the application those properties should not have values.
             password: " "
         };
@@ -18,7 +19,8 @@ class Signup extends Component {
     }
 
     handleSubmit = (event) => {
-        fetch(`${APIURL}/user/createuser`, { //must use the endpoint (local host) the service is running on - this is listed in the app.js
+        // fetch(`${APIURL}/user/createuser`, { //must use the endpoint (local host) the service is running on - this is listed in the app.js
+          fetch("http://localhost:3000/user/createuser", {
           method: "POST",
           body: JSON.stringify({user:this.state}),
           headers: new Headers({
@@ -39,12 +41,16 @@ class Signup extends Component {
             <h6>Sign up to get started!</h6>
                 <Form onSubmit={this.handleSubmit} >
                     <FormGroup>
+                        <Label id="email">Email Address</Label>
+                        <Input id="email" type="email" placeholder="enter email address" onChange={this.handleChange} />
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="username">Username</Label>
                         <Input id="username" type="text" name="username" placeholder="enter username" onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Password</Label>
-                        <Input id="su_password" type="password" name="password" placeholder="enter password" onChange={this.handleChange} />
+                        <Input id="su_password" type="password" minLength="5" name="password" placeholder="enter password" onChange={this.handleChange} />
                     </FormGroup>
                     <Button type="submit"> Submit </Button>
                 </Form>

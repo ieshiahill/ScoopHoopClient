@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import Signup from './Signup'
 import Login from './Login'
 import './auth.css'
-// import Logout from "./Logout"
+
 
 //We are creating a functional component. It has no state, and it will simply pull in the props that will be passed down eventually. Currently, this component is basically going to hold our login and signup forms side by side.
 class Authorize extends React.Component { //We are adding props to our parameter. Remember that this is a functional component, like a function it can take in arguments to be used throughout the function.
@@ -13,6 +13,13 @@ class Authorize extends React.Component { //We are adding props to our parameter
     
     render() {
     return (
+      
+        <div id="mainpage">
+        <br />
+        <br />
+        <br />
+        <h3 id="maintext">Find pickup basketball games in your area.</h3>
+        <h3 id="maintext">LET'S HOOP!</h3>
         <Container className="auth-container">
             <Row>
                 <Col md="6">
@@ -23,6 +30,8 @@ class Authorize extends React.Component { //We are adding props to our parameter
                 </Col>
             </Row>
         </Container>
+        </div>
+       
     )
     }
 }

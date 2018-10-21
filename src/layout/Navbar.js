@@ -1,18 +1,26 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem , NavbarToggler, Collapse, Button} from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem , NavbarToggler, Collapse, Button } from "reactstrap";
 // import CreateGame from ".../games/CreateGame";
 
 
 class Sitebar extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isOpen: false
+        };
+    }
+
+    toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
 
     render () {
         return (
             <div>
-                <Navbar color="faded" light expand="md">
+                <Navbar className="nav" color="faded" light expand="md">
                     <NavbarBrand href="/">Scoop Hoop</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>

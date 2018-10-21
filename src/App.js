@@ -2,63 +2,143 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import './App.css';
-import Main from "./layout/Main";
 import Sitebar from "./layout/Navbar";
-import Footer from "./layout/Footer";
-// import Sidebar from "./layout/Sidebar"
+import Authorize from "./auth/Authorize";
+import Splash from "./home/Splash";
 import { 
   BrowserRouter as Router,
+  Switch,
+  Route
 } from "react-router-dom";
 
-
-
-  class App extends Component {
-    render() {
-      return (
-        <div>
-          <Sitebar clickLogout={this.logout} />
-          <Router>
-          <Main />
-          </Router>
-          <Footer />
-          {/* <Sidebar /> */}
-        </div>
-      );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sessionToken: '',
+      sessionUser: ""
     }
   }
-  
-  export default App;
-  
 
-// import React, { Component } from 'react';
-// import "bootstrap/dist/css/bootstrap.css";
-// import './App.css';
-// import Navbar from './layout/Navbar';
-// import Footer from "./layout/Footer";
-// import Main from "./layout/Main" ////doesn't work and gives me the error message Uncaught Error: A <Router> may have only one child element
-// import Sidebar from "./layout/Sidebar";
-// import { 
-//   BrowserRouter as Router,
-// } from "react-router-dom";
-// // import Sidebar from "./layout/Sidebar";
-// // import { 
-// // } from "react-router-dom";
+  logout = () => {
+    this.setState({
+      sessionToken: "",
+    });
+    localStorage.clear();
+  }
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="app">
-//         <Navbar />
-//         <Router>
-//           <Main />
-//         </Router>
-//         <Router>
-//           <Sidebar />
-//         </Router>
-//         <Footer />
-//       </div>
-//        );
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token && !this.state.sessionToken) {
+      this.setState({ sessionToken: token });
+    }
+    const user = localStorage.getItem('user');
+    if (user && !this.state.sessionUser) {
+      this.setState({ sessionUser: user});
+    }
+  }
+
+  setSessionState = (token, id) => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', id);
+    this.setState({ sessionToken: token});
+    this.setState({ sessionUser: id});
+
+  }
+
+  protectedViews = () => {
+    if (this.state.sessionToken === localStorage.getItem('token')) {
+      return(
+        <Switch>
+          <Route path='/games' exact>
+          <Splash sessionToken={this.state.sessionToken} sessionUser={this.state.sessionUser}/>
+          </Route>
+        </Switch>
+      )
+    }else{
+      return(
+        <Route path="/auth" >
+          <Authorize setToken={this.setSessionState}/>
+        </Route>
+      )
+    }
+  }
+
+  render() {
+    return (
+      <Router>
+      <div id="main">
+        <Sitebar clickLogout={this.logout} />
+        {this.protectedViews()}
+      </div>
+      </Router>
+    );
+  }
+}
+
+export default App;
+
+
+//   class App extends Component {
+
+//     constructor() {
+//       super();
+//       this.state = {
+//         sessionToken: "",
+//         sessionUser: ""
 //       }
 //     }
-    
+
+//     logout = () => {
+//       this.setState({ sessionToken: " " });
+//       localStorage.clear();
+//     }
+
+//     componentWillMount() {
+//       const token = localStorage.getItem("token");
+//       if (token && !this.state.sessionToken) {
+//         this.setState({ sessionToken: token });
+//       }
+//       const user = localStorage.getItem('user');
+//       if (user && !this.state.sessionUser) {
+//         this.setState({ sessionUser: user});
+//     }
+
+//     setSessionState = (token, id) => {
+//       localStorage.setItem('token', token);
+//       localStorage.setItem('user', id);
+//       this.setState({ sessionToken: token});
+//       this.setState({ sessionUser: id});
+//     }
+
+//     protectedViews = () => {
+//       if (this.state.sessionToken === localStorage.getItem("token")) {
+//         return (
+//           <Switch>
+//             <Route path="/" exact>
+//             <Splash sessionToken={this.state.sessionToken} sessionUser={this.state.sessionUser}/>
+//             </Route>
+//           </Switch>
+//         )
+//       } else {
+//         return (
+//           <Route path="/auth" >
+//           <Authorize setToken={this.setSessionState} />
+//           </Route>
+//         )
+//       }
+//     }
+
+//     render() 
+//       return (
+//         <Router>
+//         <div id="main">
+//           <Sitebar clickLogout={this.logout} />
+//           {this.protectedViews()}
+//         </div>
+//         </Router>
+//       );
+//     }
+//   }
+  
 // export default App;
