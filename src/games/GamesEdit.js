@@ -20,18 +20,19 @@ class GamesEdit extends React.Component {
         };
     }
 
-    // componentDidMount() {
+    //this is throwing me an error below 
+    // componentWillMount() {
     //     this.setState({
-            // id: this.props.games.id,
-            // frequency: this.props.games.frequency,
-            // startdate: this.props.games.startdate,
-            // venue: this.props.games.venue,
-            // address: this.props.games.address,
-            // city: this.props.games.city,
-            // state: this.props.games.state,
-            // zipcode: this.props.games.zipcode,
-            // cost: this.props.games.cost,
-            // notes: this.props.games.notes,
+    //         id: this.props.games.id,
+    //         frequency: this.props.games.frequency,
+    //         startdate: this.props.games.startdate,
+    //         venue: this.props.games.venue,
+    //         address: this.props.games.address,
+    //         city: this.props.games.city,
+    //         state: this.props.games.state,
+    //         zipcode: this.props.games.zipcode,
+    //         cost: this.props.games.cost,
+    //         notes: this.props.games.notes,
     //     })
     // }
 
@@ -41,27 +42,27 @@ class GamesEdit extends React.Component {
         })
     }
 
-//    handleSubmit = (event) => {
-//        event.preventDefault();
-//        this.props.update(event, this.state)
-//    }
+   handleSubmit = (event) => {
+       event.preventDefault();
+       this.props.update(event, this.state)
+   }
 
 //testing out another fetch below 
-submitUpdate = (e) => {
-    let games = sessionStorage.getItem('games')
-    let token = sessionStorage.getItem('SessionToken')
-    fetch(`http://localhost:3000/games/${games.id}`, {
-        method: 'PUT',
-        headers: new Headers({
-            "Content-Type": "application/json",
-            "Authorization": token
-        })
-    })
-.then((res) => {
-    this.setState({ updatePressed: false })
-    this.fetchGames();
-})
-}
+// submitUpdate = (e) => {
+//     let games = sessionStorage.getItem('games')
+//     let token = sessionStorage.getItem('SessionToken')
+//     fetch(`http://localhost:3000/games/${games.id}`, {
+//         method: 'PUT',
+//         headers: new Headers({
+//             "Content-Type": "application/json",
+//             "Authorization": token
+//         })
+//     })
+// .then((res) => {
+//     this.setState({ updatePressed: false })
+//     this.fetchGames();
+// })
+// }
 
     render() {
         return (

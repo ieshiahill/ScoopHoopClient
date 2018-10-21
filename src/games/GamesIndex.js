@@ -73,12 +73,12 @@ class GamesIndex extends Component {
         render() {
             const games = this.state.games.length >= 1 ?
                 <GamesTable games={this.state.games}
-                    delete={this.gamesDelete} update={this.setUpdatedGames} /> : <h3>Games Played</h3>
+                    delete={this.gamesDelete} update={this.setUpdatedGames} /> : <h3>Available Games</h3>
             return (
                 <Container>
                     <Row>
                         <Col md="3">
-                            <CreateGame token={this.props.token} updateGamesArray={this.fetchGames} />
+                            <CreateGame token={this.props.token} updateGamesArray={this.fetchGames} /> 
                         </Col>
                         <Col md="9">
                             {games}

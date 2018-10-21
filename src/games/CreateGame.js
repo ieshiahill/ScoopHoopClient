@@ -27,7 +27,7 @@ class CreateGame extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/games", {
+        fetch("http://localhost:3000/games/", {
             method: "POST",
             body: JSON.stringify({games: this.state }),
             headers: new Headers({
@@ -58,7 +58,7 @@ class CreateGame extends Component {
         return (
             <div>
                   <h2>Start a Game!</h2>
-                    <Form md="3" onSubmit={this.handleSubmit} >
+                    <Form onSubmit={this.handleSubmit} >
                         <FormGroup >
                             <Label for="frequency">Game Frequency</Label>
                             <Input id="frequency" type="select" name="frequency" value={this.state.frequency} placeholder="Type" onChange={this.handleChange}>
@@ -99,7 +99,7 @@ class CreateGame extends Component {
                         <Label for="notes">Notes</Label>
                         <Input id="notes" type="text" name="notes" value={this.state.notes} placeholder="enter notes" onChange={this.handleChange} />
                     </FormGroup>
-                    <Button type="submit" color="primary"> Save </Button>
+                    <Button type="submit" color="primary"> Submit </Button>
                     </Form>
 
                     </div>
