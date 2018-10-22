@@ -7,7 +7,7 @@ class CreateGame extends Component {
         this.state = {
             id: "",
             gamefrequency: "",
-            time: "",
+            // time: "",
             startdate: "",
             venue: "",
             address: "",
@@ -41,7 +41,7 @@ class CreateGame extends Component {
             this.setState({
                 id: "",
                 gamefrequency: "",
-                time: "",
+                // time: "",
                 startdate: "",
                 venue: "",
                 address: "",

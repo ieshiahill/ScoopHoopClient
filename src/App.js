@@ -27,7 +27,7 @@ class App extends Component {
     localStorage.clear();
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const token = localStorage.getItem('token');
     if (token && !this.state.sessionToken) {
       this.setState({ sessionToken: token });

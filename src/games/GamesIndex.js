@@ -11,7 +11,7 @@ class GamesIndex extends Component {
         this.state = {
             games: [],
             updatePressed: false,
-            gameToUpdate: {}
+            gamesToUpdate: {}
         }
     }
 
@@ -47,7 +47,7 @@ class GamesIndex extends Component {
         .then((res) => this.fetchGames())
     }
 
-   gamesUpdate = (event, games) => { //why is the event not showing up??
+   gamesUpdate = (event, games) => { 
     // fetch(`${APIURL}/games/find/${games.id}`, {
         fetch(`http://localhost:3000/games/${games.id}`, {
             method: "PUT",
@@ -63,12 +63,12 @@ class GamesIndex extends Component {
     })
     }
 
-    setUpdatedGames = (event, games) =>
+    setUpdatedGames = (event, games) => {
         this.setState({
-            gameToUpdate: games,
+            gamesToUpdate: games,
             updatePressed: true
         })
-    
+    }
     
         render() {
             const games = this.state.games.length >= 1 ?

@@ -4,37 +4,37 @@ import { Button, Form, FormGroup, Label, Input, ModalBody, Modal, ModalHeader } 
 class GamesEdit extends React.Component {
     constructor(props) {
         super(props)
-
+        
         this.state = {
             id: "",
             gamefrequency: "",
-            time: "",
-            startdate: "",
+            // time: "",
+            // startdate: "",
             venue: "",
             address: "",
             city: "",
             state: "",
             zipcode: "",
             cost: "",
-            notes: ""
+            notes: "",
         };
     }
 
-    //this is throwing me an error below 
-    // componentWillMount() {
-    //     this.setState({
-    //         id: this.props.games.id,
-    //         frequency: this.props.games.frequency,
-    //         startdate: this.props.games.startdate,
-    //         venue: this.props.games.venue,
-    //         address: this.props.games.address,
-    //         city: this.props.games.city,
-    //         state: this.props.games.state,
-    //         zipcode: this.props.games.zipcode,
-    //         cost: this.props.games.cost,
-    //         notes: this.props.games.notes,
-    //     })
-    // }
+    // this is throwing me an error below 
+    componentWillMount() {
+        this.setState({
+            id: this.props.games.id,
+            frequency:this.props.games.frequency,
+            // startdate:this.props.games.startdate,
+            venue:this.props.games.venue,
+            address:this.props.games.address,
+            city:this.props.games.city,
+            state:this.props.games.state,
+            zipcode:this.props.games.zipcode,
+            cost:this.props.games.cost,
+            notes:this.props.games.notes,
+        })
+    }
 
     handleChange = (event) => {
         this.setState({
@@ -46,23 +46,6 @@ class GamesEdit extends React.Component {
        event.preventDefault();
        this.props.update(event, this.state)
    }
-
-//testing out another fetch below 
-// submitUpdate = (e) => {
-//     let games = sessionStorage.getItem('games')
-//     let token = sessionStorage.getItem('SessionToken')
-//     fetch(`http://localhost:3000/games/${games.id}`, {
-//         method: 'PUT',
-//         headers: new Headers({
-//             "Content-Type": "application/json",
-//             "Authorization": token
-//         })
-//     })
-// .then((res) => {
-//     this.setState({ updatePressed: false })
-//     this.fetchGames();
-// })
-// }
 
     render() {
         return (
